@@ -1,0 +1,54 @@
+<kendo-grid [data]="userInfo">
+  <kendo-grid-column field="userName">
+    <ng-template
+      kendoGridHeaderTemplate
+      let-column
+    >
+      {{ column.field }}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="gender">
+    <ng-template
+      kendoGridHeaderTemplate
+      let-column
+      let-columnIndex="columnIndex"
+    >
+      {{ column.field }}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="dateOfBirthday" [format]="{ date: 'yyyy-MM-dd' }">
+    <ng-template
+      kendoGridHeaderTemplate
+      let-column
+    >
+      {{ column.field }}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="education">
+    <ng-template
+      kendoGridHeaderTemplate
+      let-column
+      let-columnIndex="columnIndex"
+    >
+      {{ column.field }}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="startDateOfEducation" [format]="{ date: 'yyyy-MM-dd' }">
+    <ng-template
+      kendoGridHeaderTemplate
+      let-column
+      let-columnIndex="columnIndex"
+    >
+      {{ column.field }}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="endDateOfEducation" [format]="{ date: 'yyyy-MM-dd' }">
+    <ng-template
+      kendoGridHeaderTemplate
+      let-column
+      let-columnIndex="columnIndex"
+    >
+      {{ column.field }}
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
