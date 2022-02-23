@@ -8,6 +8,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {DropDownsModule} from "@progress/kendo-angular-dropdowns";
 import {DateInputsModule} from "@progress/kendo-angular-dateinputs";
 import {CreateUserComponent} from "./create-user.component";
+import {UserService} from "../../services/user.service";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {CreateUserComponent} from "./create-user.component";
     DropDownsModule,
     DateInputsModule,
   ],
+  providers: [UserService],
   exports: [
     CreateUserComponent
   ]
