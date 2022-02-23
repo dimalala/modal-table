@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UserInfo} from "../interfaces/user-info.interface";
+import {UserInfo} from "../../interfaces/user-info.interface";
 
 @Component({
   selector: 'app-main-page',
