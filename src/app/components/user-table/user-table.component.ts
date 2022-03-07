@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {UserInfo} from "../../interfaces/user-info.interface";
+import { Component, Input } from '@angular/core';
+import { UserInfo } from "../../interfaces/user-info.interface";
 
 
 @Component({
@@ -10,4 +10,8 @@ import {UserInfo} from "../../interfaces/user-info.interface";
 
 export class UserTableComponent {
   @Input() userInfo: UserInfo[] = [];
+
+  public removeUser({ dataItem }) {
+    return this.userInfo = this.userInfo.filter((item) => item.userName !== dataItem.userName);
+  }
 }

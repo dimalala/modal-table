@@ -1,4 +1,4 @@
-<kendo-grid [data]="userInfo">
+<kendo-grid [data]="userInfo" (remove)="removeUser($event)">
   <kendo-grid-column field="userName">
     <ng-template
       kendoGridHeaderTemplate
@@ -51,4 +51,9 @@
     {{ 'Дата конца обучения' }}
     </ng-template>
   </kendo-grid-column>
+  <kendo-grid-command-column title="command" width="220">
+    <ng-template kendoGridCellTemplate let-isNew="isNew">
+      <button kendoGridRemoveCommand>Remove</button>
+    </ng-template>
+  </kendo-grid-command-column>
 </kendo-grid>

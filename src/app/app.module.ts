@@ -7,6 +7,7 @@ import {MainPageModule} from "./components/main-page/main-page.module";
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ButtonsModule } from "@progress/kendo-angular-buttons";
     MainPageModule,
     InputsModule,
     BrowserAnimationsModule,
-    ButtonsModule
+    ButtonsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

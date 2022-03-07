@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../services/user.service";
-import {UsernameValidator} from "../username-validator.component";
-import {UserInfo} from "../../interfaces/user-info.interface";
+import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
+import { UserService } from "../../services/user.service";
+import { UsernameValidator } from "../username-validator.component";
+import { UserInfo } from "../../interfaces/user-info.interface";
 
 @Component({
   selector: 'app-create-user',
@@ -29,12 +29,12 @@ export class CreateUserComponent implements OnInit {
   ];
 
   education: { label: string; value: string }[] = [
-    { label: "Backend", value: 'backend'},
-    { label: "Frontend", value: 'frontend'},
-    { label: "Design", value: 'design'},
-    { label: "Project Management", value: 'projectManagement'},
-    { label: "Quality Assurance", value: 'qualityAssurance'},
-    { label: "Business Analytic", value: 'businessAnalytic'},
+    { label: "Backend", value: 'backend' },
+    { label: "Frontend", value: 'frontend' },
+    { label: "Design", value: 'design' },
+    { label: "Project Management", value: 'projectManagement' },
+    { label: "Quality Assurance", value: 'qualityAssurance' },
+    { label: "Business Analytic", value: 'businessAnalytic' },
   ];
 
   constructor(private userService: UserService) {
