@@ -1,8 +1,8 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {BrowserModule} from "@angular/platform-browser";
-import {UserTableComponent} from "./user-table.component";
-import {GridModule} from "@progress/kendo-angular-grid";
+import { BrowserModule } from "@angular/platform-browser";
+import { UserTableComponent } from "./user-table.component";
+import { GridModule } from "@progress/kendo-angular-grid";
 
 @NgModule({
   declarations: [
