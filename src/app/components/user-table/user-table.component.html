@@ -4,7 +4,7 @@
       kendoGridHeaderTemplate
       let-column
     >
-      {{ column.field }}
+      {{ 'Имя пользователя'  }}
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="gender">
@@ -13,7 +13,7 @@
       let-column
       let-columnIndex="columnIndex"
     >
-      {{ column.field }}
+      {{ 'Пол' }}
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="dateOfBirthday" [format]="{ date: 'yyyy-MM-dd' }">
@@ -21,7 +21,7 @@
       kendoGridHeaderTemplate
       let-column
     >
-      {{ column.field }}
+    {{ 'Дата рождения' }}
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="education">
@@ -30,7 +30,7 @@
       let-column
       let-columnIndex="columnIndex"
     >
-      {{ column.field }}
+      {{ 'Направление обучения' }}
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="startDateOfEducation" [format]="{ date: 'yyyy-MM-dd' }">
@@ -39,7 +39,7 @@
       let-column
       let-columnIndex="columnIndex"
     >
-      {{ column.field }}
+    {{ 'Дата начала обучения' }}
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="endDateOfEducation" [format]="{ date: 'yyyy-MM-dd' }">
@@ -48,7 +48,7 @@
       let-column
       let-columnIndex="columnIndex"
     >
-      {{ column.field }}
+    {{ 'Дата конца обучения' }}
     </ng-template>
   </kendo-grid-column>
 </kendo-grid>

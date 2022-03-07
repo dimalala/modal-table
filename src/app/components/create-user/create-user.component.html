@@ -1,5 +1,5 @@
 <div class="k-overlay" *ngIf="isOpened"></div>
-<div class="example-wrapper">
+<div class="create-user">
   <button kendoButton (click)="openModalOpen()">Добавить пользователя</button>
   <kendo-window
     title="Please provide additional data"
@@ -46,31 +46,75 @@
         <label class="k-form-field">
           <span>Пол</span>
         </label>
-        <kendo-dropdownlist formControlName="gender" [data]="gender"> </kendo-dropdownlist>
+        <kendo-dropdownlist formControlName="gender" [data]="gender" textField="label" valueField="value"> </kendo-dropdownlist>
+        <div class="validation-message" *ngIf="showValidationsErrors(createUserForm?.get('gender'))">
+          <div
+            class="validation-message-text"
+            *ngIf="showControlErrors(createUserForm?.get('gender'),'required')"
+          >
+            {{ 'required'}}
+          </div>
+          </div>
       </div>
       <div class="form-group">
         <label class="k-form-field">
           <span>Дата рождения</span>
         </label>
-        <kendo-datepicker formControlName="dateOfBirthday"></kendo-datepicker>
+        <kendo-datepicker [max]="maxDateOfBirthday" formControlName="dateOfBirthday"></kendo-datepicker>
+        <div class="validation-message" *ngIf="showValidationsErrors(createUserForm?.get('dateOfBirthday'))">
+          <div
+            class="validation-message-text"
+            *ngIf="showControlErrors(createUserForm?.get('dateOfBirthday'),'required')"
+          >
+            {{ 'required'}}
+          </div>
+          </div>
       </div>
       <div class="form-group">
         <label class="k-form-field">
           <span>Направление обучения</span>
         </label>
-        <kendo-dropdownlist formControlName="education" [data]="education"> </kendo-dropdownlist>
+        <kendo-dropdownlist formControlName="education" [data]="education" textField="label" valueField="value"> </kendo-dropdownlist>
+        <div class="validation-message" *ngIf="showValidationsErrors(createUserForm?.get('education'))">
+          <div
+            class="validation-message-text"
+            *ngIf="showControlErrors(createUserForm?.get('education'),'required')"
+          >
+            {{ 'required'}}
+          </div>
+          </div>
       </div>
       <div class="form-group">
         <label class="k-form-field">
           <span>Дата начала обучения</span>
         </label>
-        <kendo-datepicker formControlName="startDateOfEducation"></kendo-datepicker>
+        <kendo-datepicker
+         [min]="minStartDateOfEducation"
+         [max]="maxStartDateOfEducation"
+         formControlName="startDateOfEducation"
+         ></kendo-datepicker>
+         <div class="validation-message" *ngIf="showValidationsErrors(createUserForm?.get('startDateOfEducation'))">
+          <div
+            class="validation-message-text"
+            *ngIf="showControlErrors(createUserForm?.get('startDateOfEducation'),'required')"
+          >
+            {{ 'required'}}
+          </div>
+          </div>
       </div>
       <div class="form-group">
         <label class="k-form-field">
           <span>Дата конца обучения</span>
         </label>
-        <kendo-datepicker formControlName="endDateOfEducation"></kendo-datepicker>
+        <kendo-datepicker [min]="minEndDateOfEducation" formControlName="endDateOfEducation"></kendo-datepicker>
+        <div class="validation-message" *ngIf="showValidationsErrors(createUserForm?.get('endDateOfEducation'))">
+          <div
+            class="validation-message-text"
+            *ngIf="showControlErrors(createUserForm?.get('endDateOfEducation'),'required')"
+          >
+            {{ 'required'}}
+          </div>
+          </div>
       </div>
       <div class="text-right">
         <button type="button" class="k-button" (click)="closeModalWindow()">

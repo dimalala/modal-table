@@ -14,31 +14,55 @@ export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
   isOpened = false;
   userNameAlreadyExist: string[] = [];
+
+  minStartDateOfEducation: Date;
+  maxStartDateOfEducation: Date;
+
+  minEndDateOfEducation: Date;
+  maxDateOfBirthday: Date;
+
   @Input() userInfo: UserInfo[] = [];
 
-  gender: string[] = [
-    "Male",
-    "Female",
+  gender: { label: string; value: string }[] = [
+    { label: "Male", value: 'male' },
+    { label: "Female", value: 'female' },
   ];
 
-  education: string[] = [
-    "Backend",
-    "Frontend",
-    "Design",
-    "Project Management",
-    "Quality Assurance",
-    "Business Analytic",
+  education: { label: string; value: string }[] = [
+    { label: "Backend", value: 'backend'},
+    { label: "Frontend", value: 'frontend'},
+    { label: "Design", value: 'design'},
+    { label: "Project Management", value: 'projectManagement'},
+    { label: "Quality Assurance", value: 'qualityAssurance'},
+    { label: "Business Analytic", value: 'businessAnalytic'},
   ];
 
   constructor(private userService: UserService) {
+  }
+
+  validationOfStartDateEducation(): void {
+    this.minStartDateOfEducation = this.createUserForm.get('dateOfBirthday').value;
+    this.maxStartDateOfEducation = this.createUserForm.get('endDateOfEducation').value;
+  }
+
+  validationOfEndDateEducation(): void {
+    this.minEndDateOfEducation = this.createUserForm.get('startDateOfEducation').value;
+  }
+
+  validationOfDateOfBirthday(): void {
+    this.maxDateOfBirthday = this.createUserForm.get('startDateOfEducation').value;
   }
 
   get isNotValidForm(): boolean {
     const dateOfBirthday = new Date(this.createUserForm.get('dateOfBirthday').value)
     const startDateOfEducation = new Date(this.createUserForm.get('startDateOfEducation').value)
     const endDateOfEducation = new Date(this.createUserForm?.get('endDateOfEducation').value)
-    const educationValue = this.createUserForm.get('education').value
-    if (educationValue === 'Frontend' || educationValue === 'Backend') {
+    const educationValue = this.createUserForm.getRawValue().education.value;
+
+    this.validationOfStartDateEducation();
+    this.validationOfEndDateEducation();
+    this.validationOfDateOfBirthday();
+    if (educationValue === 'frontend' || educationValue === 'backend') {
       return !this.createUserForm.valid
         || dateOfBirthday > (startDateOfEducation) ||
         startDateOfEducation < (dateOfBirthday)
@@ -88,7 +112,12 @@ export class CreateUserComponent implements OnInit {
   };
 
   submit(): void {
-    this.userInfo.push(this.createUserForm.value)
+    const transformedCreateUserForm = {
+      ...this.createUserForm.value,
+      gender: this.createUserForm.getRawValue().gender.value,
+      education: this.createUserForm.getRawValue().education.value
+    }
+    this.userInfo.push(transformedCreateUserForm);
     this.closeModalWindow();
   }
 
@@ -115,7 +144,7 @@ export class CreateUserComponent implements OnInit {
       ?.valueChanges
       .subscribe({
         next: (education) => {
-          if (education === 'Frontend' || education === 'Backend') {
+          if (education?.value === 'frontend' || education?.value === 'backend') {
             this.createUserForm.get('endDateOfEducation').clearValidators()
             this.createUserForm.get('endDateOfEducation')?.updateValueAndValidity();
           }
